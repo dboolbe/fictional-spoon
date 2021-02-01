@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.myapplication.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_readAccountFragment"
+            app:destination="@id/readAccountFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_readTransactionFragment"
+            app:destination="@id/readTransactionFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_readBucketFragment"
+            app:destination="@id/readBucketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.myapplication.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/readTransactionFragment"
+        android:name="com.example.myapplication.models.transaction.ReadTransactionFragment"
+        android:label="fragment_read_transaction"
+        tools:layout="@layout/fragment_read_transaction" >
+        <action
+            android:id="@+id/action_readTransactionFragment_to_createUpdateTransactionFragment"
+            app:destination="@id/createUpdateTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUpdateTransactionFragment"
+        android:name="com.example.myapplication.models.transaction.CreateUpdateTransactionFragment"
+        android:label="fragment_create_update_transaction"
+        tools:layout="@layout/fragment_create_update_transaction" >
+        <action
+            android:id="@+id/action_createUpdateTransactionFragment_to_readTransactionFragment"
+            app:destination="@id/readTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readBucketFragment"
+        android:name="com.example.myapplication.models.bucket.ReadBucketFragment"
+        android:label="fragment_read_bucket"
+        tools:layout="@layout/fragment_read_bucket" >
+        <action
+            android:id="@+id/action_readBucketFragment_to_createUpdateBucketFragment"
+            app:destination="@id/createUpdateBucketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUpdateBucketFragment"
+        android:name="com.example.myapplication.models.bucket.CreateUpdateBucketFragment"
+        android:label="fragment_create_update_bucket"
+        tools:layout="@layout/fragment_create_update_bucket" >
+        <action
+            android:id="@+id/action_createUpdateBucketFragment_to_readBucketFragment"
+            app:destination="@id/readBucketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/readAccountFragment"
+        android:name="com.example.myapplication.models.account.ReadAccountFragment"
+        android:label="fragment_read_account"
+        tools:layout="@layout/fragment_read_account" >
+        <action
+            android:id="@+id/action_readAccountFragment_to_createUpdateAccountFragment"
+            app:destination="@id/createUpdateAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUpdateAccountFragment"
+        android:name="com.example.myapplication.models.account.CreateUpdateAccountFragment"
+        android:label="fragment_create_update_account"
+        tools:layout="@layout/fragment_create_update_account" >
+        <action
+            android:id="@+id/action_createUpdateAccountFragment_to_readAccountFragment"
+            app:destination="@id/readAccountFragment" />
+    </fragment>
+</navigation>

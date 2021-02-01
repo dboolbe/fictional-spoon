@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#5f9793"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="112dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_name"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_monthly_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_monthly_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_yearly_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_yearly_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_monthly_expense_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_monthly_expense_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_monthly_income_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_monthly_income_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_yearly_expense_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_yearly_expense_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/text_view_yearly_income_amount"
+        android:layout_width="224dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:text="@string/col_yearly_income_amount"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+</LinearLayout>
