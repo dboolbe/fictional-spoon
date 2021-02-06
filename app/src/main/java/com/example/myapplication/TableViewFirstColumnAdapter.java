@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,12 @@ public class TableViewFirstColumnAdapter extends RecyclerView.Adapter<TableViewF
             itemView = layoutInflater.inflate(R.layout.table_header_column_list_item, parent, false);
         } else {
             itemView = layoutInflater.inflate(R.layout.table_column_list_item, parent, false);
+
+            if(viewType % 2 == 0) {
+                itemView.setBackgroundColor(itemView.getResources().getColor(R.color.white));
+            } else {
+                itemView.setBackgroundColor(itemView.getResources().getColor(R.color.light_grey));
+            }
         }
 
         return new RowViewHolder(itemView);
@@ -61,7 +68,8 @@ public class TableViewFirstColumnAdapter extends RecyclerView.Adapter<TableViewF
 
     @Override
     public int getItemViewType(int position) {
-        return (position == 0) ? 0 : 1;
+//        return (position == 0) ? 0 : 1;
+        return position;
     }
 
     @Override

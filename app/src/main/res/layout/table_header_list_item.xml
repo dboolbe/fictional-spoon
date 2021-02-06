@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#5f9793"
+    android:background="@drawable/border_selected"
     android:padding="10dp" >
 
     <TextView
         android:id="@+id/text_view_name"
-        android:layout_width="112dp"
+        android:layout_width="224dp"
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:text="@string/col_name"

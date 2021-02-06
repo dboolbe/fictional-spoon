@@ -13,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.db.models.Account;
 import com.example.myapplication.db.models.BaseModel;
 
+import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowViewHolder> implements StickHeaderItemDecoration.StickyHeaderInterface {
 
@@ -33,6 +37,12 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
             itemView = layoutInflater.inflate(R.layout.table_header_list_item, parent, false);
         } else {
             itemView = layoutInflater.inflate(R.layout.table_list_item, parent, false);
+
+            if(viewType % 2 == 0) {
+                itemView.setBackgroundColor(itemView.getResources().getColor(R.color.white));
+            } else {
+                itemView.setBackgroundColor(itemView.getResources().getColor(R.color.light_grey));
+            }
         }
 
         Log.d(TableViewAdapter.class.toString(), "****************************************************************");
@@ -58,16 +68,23 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
             holder.textViewYearlyExpenseAmount.setText(R.string.col_yearly_expense_amount);
             holder.textViewYearlyIncomeAmount.setText(R.string.col_yearly_income_amount);
         } else {
+            Locale locale = holder.itemView.getResources().getConfiguration().locale;
+            NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+//            if(numberFormat instanceof DecimalFormat) {
+//                DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
+//                decimalFormat.setMinimumIntegerDigits(7);
+//            }
+
             Account account = (Account) data.get(rowPos - 1);
 
 //            holder.textViewId.setText(account.getId().toString());
             holder.textViewName.setText(account.getName());
-            holder.textViewMonthlyAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getMonthlyAmount()));
-            holder.textViewYearlyAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getYearlyAmount()));
-            holder.textViewMonthlyExpenseAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getMonthlyExpenseAmount()));
-            holder.textViewMonthlyIncomeAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getMonthlyIncomeAmount()));
-            holder.textViewYearlyExpenseAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getYearlyExpenseAmount()));
-            holder.textViewYearlyIncomeAmount.setText(String.format(holder.itemView.getResources().getString(R.string.format_money),account.getYearlyIncomeAmount()));
+            holder.textViewMonthlyAmount.setText(numberFormat.format(account.getMonthlyAmount()));
+            holder.textViewYearlyAmount.setText(numberFormat.format(account.getYearlyAmount()));
+            holder.textViewMonthlyExpenseAmount.setText(numberFormat.format(account.getMonthlyExpenseAmount()));
+            holder.textViewMonthlyIncomeAmount.setText(numberFormat.format(account.getMonthlyIncomeAmount()));
+            holder.textViewYearlyExpenseAmount.setText(numberFormat.format(account.getYearlyExpenseAmount()));
+            holder.textViewYearlyIncomeAmount.setText(numberFormat.format(account.getYearlyIncomeAmount()));
         }
     }
 
@@ -78,7 +95,8 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
 
     @Override
     public int getItemViewType(int position) {
-        return (position == 0) ? 0 : 1;
+//        return (position == 0) ? 0 : 1;
+        return position;
     }
 
     @Override

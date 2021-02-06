@@ -11,29 +11,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/horizontal_scroll_view"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <HorizontalScrollView
-        android:id="@+id/horizontal_scroll_view"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/textview_first"
         app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewDeliveryProductList"
-            android:layout_width="match_parent"
+            android:id="@+id/recyclerViewColumnId"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/table_list_item"/>
+            tools:listitem="@layout/table_column_list_item" />
 
-    </HorizontalScrollView>
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewDeliveryProductList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/table_list_item"/>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_first"
@@ -43,6 +55,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/horizontal_scroll_view" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

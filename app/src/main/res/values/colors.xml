@@ -9,4 +9,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FFFF0000</color>
     <color name="green">#FF008000</color>
+
+    <color name="lighter_green">#FFDBFFD6</color>
+    <color name="light_green">#FF9DE693</color>
+
+    <color name="lighter_purple">#FFDFCEFF</color>
+    <color name="light_purple">#FFAB8CE6</color>
+
+    <color name="lighter_blue">#FF93D0FF</color>
+    <color name="light_blue">#FF57A8E6</color>
+
+    <color name="light_orange">#FFFFBB93</color>
+    <color name="light_grey">#FFdddddd</color>
+
+    <color name="shadow_start">#80000000</color>
+    <color name="shadow_end">#00000000</color>
 </resources>
