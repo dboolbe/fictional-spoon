@@ -56,7 +56,7 @@ public class FirstFragment extends Fragment {
 
         RecyclerView recyclerViewId = view.findViewById(R.id.recyclerViewColumnId);
 
-        TableViewFirstColumnAdapter tableViewAdapterId = new TableViewFirstColumnAdapter(getContext(), dbList);
+        TableViewAdapter tableViewAdapterId = new TableViewAdapter(getContext(), dbList, true);
 
         LinearLayoutManager linearLayoutManagerId = new LinearLayoutManager(getContext());
         StickHeaderItemDecoration stickHeaderDecorationId = new StickHeaderItemDecoration(tableViewAdapterId);

@@ -21,32 +21,48 @@ import java.util.Locale;
 
 public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowViewHolder> implements StickHeaderItemDecoration.StickyHeaderInterface {
 
+    private static class ViewType {
+        public static int HEADER = 0;
+        public static int DATA_ODD = 1;
+        public static int DATA_EVEN = 2;
+    }
+
     private final List<? extends BaseModel> data;
     private final LayoutInflater layoutInflater;
+    private final boolean identifier_column;
 
     public TableViewAdapter(Context context, List<? extends BaseModel> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
+        this.identifier_column = false;
+    }
+
+    public TableViewAdapter(Context context, List<? extends BaseModel> data, boolean identifier_column) {
+        this.layoutInflater = LayoutInflater.from(context);
+        this.data = data;
+        this.identifier_column = identifier_column;
     }
 
     @NonNull
     @Override
     public RowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = null;
-        if (viewType == 0) {
-            itemView = layoutInflater.inflate(R.layout.table_header_list_item, parent, false);
+        View itemView;
+        if(identifier_column) {
+            itemView = layoutInflater.inflate(R.layout.table_column_list_item, parent, false);
         } else {
             itemView = layoutInflater.inflate(R.layout.table_list_item, parent, false);
+        }
 
-            if(viewType % 2 == 0) {
+        if (viewType == ViewType.HEADER) {
+            itemView.setBackground(itemView.getResources().getDrawable(R.drawable.border_selected));
+        } else {
+            itemView.setBackgroundResource(0);
+            if(viewType == ViewType.DATA_EVEN) {
                 itemView.setBackgroundColor(itemView.getResources().getColor(R.color.white));
             } else {
                 itemView.setBackgroundColor(itemView.getResources().getColor(R.color.light_grey));
             }
         }
-
-        Log.d(TableViewAdapter.class.toString(), "****************************************************************");
-        Log.d(TableViewAdapter.class.toString(), "viewType: " + viewType);
 
         return new RowViewHolder(itemView);
     }
@@ -56,35 +72,27 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
 
         int rowPos = holder.getAdapterPosition();
 
-        if(rowPos == 0) {
-            Log.d(TableViewAdapter.class.toString(),"Placeholder test");
+        if (rowPos != ViewType.HEADER) {
+            Account account = (Account) data.get(rowPos - 1);
 
-//            holder.textViewId.setText(R.string.col_id);
-            holder.textViewName.setText(R.string.col_name);
-            holder.textViewMonthlyAmount.setText(R.string.col_monthly_amount);
-            holder.textViewYearlyAmount.setText(R.string.col_yearly_amount);
-            holder.textViewMonthlyExpenseAmount.setText(R.string.col_monthly_expense_amount);
-            holder.textViewMonthlyIncomeAmount.setText(R.string.col_monthly_income_amount);
-            holder.textViewYearlyExpenseAmount.setText(R.string.col_yearly_expense_amount);
-            holder.textViewYearlyIncomeAmount.setText(R.string.col_yearly_income_amount);
-        } else {
-            Locale locale = holder.itemView.getResources().getConfiguration().locale;
-            NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
+            if (identifier_column) {
+                holder.textViewId.setText(account.getId().toString());
+            } else {
+                Locale locale = holder.itemView.getResources().getConfiguration().locale;
+                NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
 //            if(numberFormat instanceof DecimalFormat) {
 //                DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
 //                decimalFormat.setMinimumIntegerDigits(7);
 //            }
 
-            Account account = (Account) data.get(rowPos - 1);
-
-//            holder.textViewId.setText(account.getId().toString());
-            holder.textViewName.setText(account.getName());
-            holder.textViewMonthlyAmount.setText(numberFormat.format(account.getMonthlyAmount()));
-            holder.textViewYearlyAmount.setText(numberFormat.format(account.getYearlyAmount()));
-            holder.textViewMonthlyExpenseAmount.setText(numberFormat.format(account.getMonthlyExpenseAmount()));
-            holder.textViewMonthlyIncomeAmount.setText(numberFormat.format(account.getMonthlyIncomeAmount()));
-            holder.textViewYearlyExpenseAmount.setText(numberFormat.format(account.getYearlyExpenseAmount()));
-            holder.textViewYearlyIncomeAmount.setText(numberFormat.format(account.getYearlyIncomeAmount()));
+                holder.textViewName.setText(account.getName());
+                holder.textViewMonthlyAmount.setText(numberFormat.format(account.getMonthlyAmount()));
+                holder.textViewYearlyAmount.setText(numberFormat.format(account.getYearlyAmount()));
+                holder.textViewMonthlyExpenseAmount.setText(numberFormat.format(account.getMonthlyExpenseAmount()));
+                holder.textViewMonthlyIncomeAmount.setText(numberFormat.format(account.getMonthlyIncomeAmount()));
+                holder.textViewYearlyExpenseAmount.setText(numberFormat.format(account.getYearlyExpenseAmount()));
+                holder.textViewYearlyIncomeAmount.setText(numberFormat.format(account.getYearlyIncomeAmount()));
+            }
         }
     }
 
@@ -95,18 +103,27 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
 
     @Override
     public int getItemViewType(int position) {
-//        return (position == 0) ? 0 : 1;
-        return position;
+        int viewType;
+        if(position == ViewType.HEADER) {
+            viewType = ViewType.HEADER;
+        } else {
+            if(position % ViewType.DATA_EVEN == 0) {
+                viewType = ViewType.DATA_EVEN;
+            } else {
+                viewType = ViewType.DATA_ODD;
+            }
+        }
+        return viewType;
     }
 
     @Override
     public boolean isHeader(int itemPosition) {
-        return itemPosition == 0;
+        return itemPosition == ViewType.HEADER;
     }
 
     @Override
     public int getHeaderLayout(int headerPosition) {
-        return R.layout.table_header_list_item;
+        return (identifier_column) ? R.layout.table_column_list_item : R.layout.table_list_item;
     }
 
     @Override
@@ -127,7 +144,7 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
     }
 
     public static class RowViewHolder extends RecyclerView.ViewHolder {
-//        protected TextView textViewId;
+        protected TextView textViewId;
         protected TextView textViewName;
         protected TextView textViewMonthlyAmount;
         protected TextView textViewYearlyAmount;
@@ -139,7 +156,7 @@ public class TableViewAdapter extends RecyclerView.Adapter<TableViewAdapter.RowV
         public RowViewHolder(View itemView) {
             super(itemView);
 
-//            textViewId = itemView.findViewById(R.id.text_view_id);
+            textViewId = itemView.findViewById(R.id.text_view_id);
             textViewName = itemView.findViewById(R.id.text_view_name);
             textViewMonthlyAmount = itemView.findViewById(R.id.text_view_monthly_amount);
             textViewYearlyAmount = itemView.findViewById(R.id.text_view_yearly_amount);
