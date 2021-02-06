@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:text="@string/col_name"
-        android:singleLine="true"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="center"
