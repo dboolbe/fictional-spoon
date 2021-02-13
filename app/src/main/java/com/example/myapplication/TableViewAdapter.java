@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.db.models.Account;
 import com.example.myapplication.db.models.BaseModel;
 
-import java.text.DecimalFormat;
-import java.text.FieldPosition;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;

@@ -45,7 +45,9 @@ public class CreateUpdateTransactionFragment extends Fragment implements Adapter
         databaseHandler = new DatabaseHandler(getContext());
 
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
-        fab.setVisibility(View.INVISIBLE);
+        if(fab != null) {
+            fab.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

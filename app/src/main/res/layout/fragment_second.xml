@@ -24,6 +24,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/enter_payee">
 
@@ -40,6 +43,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/frequency_hint">
 
@@ -66,7 +70,7 @@
 
         <RadioGroup
             android:id="@+id/radioGroupTransactionType"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
@@ -79,6 +83,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/enter_amount">
 
@@ -96,6 +101,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/bucket_hint">
 
@@ -123,6 +129,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/calculated_monthly_amount">
 
@@ -141,6 +148,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/calculated_yearly_amount">
 
@@ -150,6 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:autofillHints=""
+                android:background="@color/light_grey"
                 android:layout_weight="1"
                 android:focusable="false"
                 android:inputType="none" />
@@ -159,6 +168,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/account_funds_coming_from">
 
@@ -185,6 +195,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/account_funds_going_to">
 
@@ -211,6 +222,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
             android:paddingTop="@dimen/text_margin"
             android:hint="@string/enter_comment">
 
@@ -232,8 +246,7 @@
             android:id="@+id/navigationButtonGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="72dp"
-            android:layout_below="@+id/editTextComment">
+            android:layout_marginBottom="72dp">
 
             <View
                 android:id="@+id/buttonDivider"

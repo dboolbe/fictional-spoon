@@ -34,8 +34,8 @@
 
     <string name="enter_payee">Enter Payee</string>
     <string name="enter_amount">Enter Amount</string>
-    <string name="calculated_monthly_amount">Monthly</string>
-    <string name="calculated_yearly_amount">Yearly</string>
+    <string name="calculated_monthly_amount">Calculated Monthly Amt.</string>
+    <string name="calculated_yearly_amount">Calculated Yearly Amt.</string>
     <string name="account_funds_coming_from">Account Funding Coming From</string>
     <string name="account_funds_going_to">Account Funding Going To</string>
     <string name="enter_comment">Enter Comment</string>

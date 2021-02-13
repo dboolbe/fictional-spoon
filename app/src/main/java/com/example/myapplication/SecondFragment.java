@@ -283,7 +283,8 @@ public class SecondFragment extends Fragment {
         EditText editTextAmount = getActivity().findViewById(R.id.editTextAmount);
         EditText amountMonthly = getActivity().findViewById(R.id.amountMonthly);
 
-        if(transactionTypeRadioGroup.getCheckedRadioButtonId() != -1 && editTextAmount != null
+        if(transactionTypeRadioGroup != null &&
+                transactionTypeRadioGroup.getCheckedRadioButtonId() != -1 && editTextAmount != null
                 && amountMonthly != null && !editTextAmount.getText().toString().isEmpty()) {
             double amount = Double.parseDouble(editTextAmount.getText().toString());
 
@@ -298,7 +299,8 @@ public class SecondFragment extends Fragment {
         EditText editTextAmount = getActivity().findViewById(R.id.editTextAmount);
         EditText amountYearly = getActivity().findViewById(R.id.amountYearly);
 
-        if(transactionTypeRadioGroup.getCheckedRadioButtonId() != -1 && editTextAmount != null
+        if(transactionTypeRadioGroup != null &&
+                transactionTypeRadioGroup.getCheckedRadioButtonId() != -1 && editTextAmount != null
                 && amountYearly != null && !editTextAmount.getText().toString().isEmpty()) {
             double amount = Double.parseDouble(editTextAmount.getText().toString());
 
